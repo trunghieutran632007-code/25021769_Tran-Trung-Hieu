@@ -1,27 +1,34 @@
-def doi(a):
-    if a=='1':
-        return '0'
+#W6A9
+def Nhap_dic(pairs):
+    dic = {}
+    for pair in pairs:
+        key, value = pair.split(":")
+        value = int(value)
+        if key not in dic:
+            dic[key] = 0
+        dic[key] += value
+    return dic
+        
+
+
+
+line1 = input()
+pairs1 = line1.split( )
+line2 = input()
+pairs2 = line2.split( )
+dic1 = {}
+dic2 = {}
+dic1 = Nhap_dic(pairs1)
+dic2 = Nhap_dic(pairs2)
+
+#Gop 2 dict
+newdic = dic1
+for key, value in dic2.items():
+    if key in newdic:
+        newdic[key] += value
     else:
-        return '1'
-n=int(input())
-a=['0']*(n)
-print(''.join(a))
-a[n-1]=doi(a[n-1])
-print(''.join(a))
-gh=0
-vt=n-2
-for i in range((2**n)//2):
-    if vt<gh:
-        vt=n-1
-        gh+=1
-        a[vt]=doi(a[vt])
-        print(''.join(a))
-        vt=n-2
-    else:
-        a[vt]=doi(a[vt])
-        print(''.join(a))
-        a[vt+1]=doi(a[vt+1])
-        print(''.join(a))
-        vt-=1
+        newdic[key] = value
+for key in sorted(newdic.keys()):
+    print(f'{key}:{newdic[key]}')
 
 
