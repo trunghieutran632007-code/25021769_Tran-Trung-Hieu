@@ -1,34 +1,43 @@
-#W6A9
-def Nhap_dic(pairs):
-    dic = {}
-    for pair in pairs:
-        key, value = pair.split(":")
-        value = int(value)
-        if key not in dic:
-            dic[key] = 0
-        dic[key] += value
-    return dic
-        
+def Bubble_sort(a):
+    for i in range(len(a)):
+        swapped = False #Biến swap: nếu có chuowmg trình sẽ "thông minh" hơn
+        for j in range(len(a)-i-1):
+            if a[j] > a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
+                swapped = True
+        print(a)
+        if not swapped:
+            break
+    return a
+
+def Selection_sort(a):
+    for i in range(len(a)):
+        minInd = i
+        for j in range(i+1, len(a)):
+            if a[minInd] > a[j]:
+                minInd = j
+        if minInd != i:
+            a[i], a[minInd] = a[minInd], a[i]
+            print(a)
+
+def Insertion_sort(a):
+    for i in range(1, len(a)):
+        key = a[i]
+        j = i-1
+        while j >=0 and a[j] > key:
+            a[j+1] = a[j] #dịch các phần tử bên trái lên 1
+            j -= 1
+        a[j+1] = key
+    return a 
+    
 
 
 
-line1 = input()
-pairs1 = line1.split( )
-line2 = input()
-pairs2 = line2.split( )
-dic1 = {}
-dic2 = {}
-dic1 = Nhap_dic(pairs1)
-dic2 = Nhap_dic(pairs2)
-
-#Gop 2 dict
-newdic = dic1
-for key, value in dic2.items():
-    if key in newdic:
-        newdic[key] += value
-    else:
-        newdic[key] = value
-for key in sorted(newdic.keys()):
-    print(f'{key}:{newdic[key]}')
 
 
+n = [30, 11, 70, 45, 41]
+
+print('Từng bước')
+print(n)
+
+print(Insertion_sort(n))
