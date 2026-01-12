@@ -1,19 +1,17 @@
-class Sv:
-    def __init__(self, id, name, pt1, pt2, pt3):
-        self.id = id
-        self.name = name
-        self.pt1 = pt1
-        self.pt2 = pt2
-        self.pt3 = pt3
-    def avrPt(self):
-        return self.pt1 * 0.1 + self.pt2 * 0.3 + self.pt3 * 0.6
-    def __repr__(self):
-        return f'Ho ten: {self.name} \nMa sinh vien: {self.id} \n Diem trung binh: {self.avrPt()}'
-    
-sv1 = Sv(25021769, 'Tran Trung Hieu' , 10.0, 5.0, 4.0)
-print(sv1)
+from pathlib import Path
+# Write a file (mode 'w' overwrites)
+file_path = "data.txt"
+f = open(file_path, "w", encoding="utf-8")
+f.write("Alice")
+f.close()
 
-numofSv = int(input("Nhap so luong sinh vien them vao: "))
-lstOfStudens = []
-for i in range(numofSv):
-    
+# Append a second line
+f = open(file_path, "a", encoding="utf-8")
+f.write("\nBob")
+f.close()
+
+#print(Path(file_path).read_text(encoding="utf-8"))
+with  open(file_path, "a", encoding = "utf-8") as f:
+    f.write("\nabc1234")
+with open(file_path, 'r', encoding="utf-8") as f:
+    print(f.read())
